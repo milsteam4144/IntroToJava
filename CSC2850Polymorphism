@@ -1,0 +1,59 @@
+//Mallory Milstead 9/7/2021
+//Polymorphism Example
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MenuItem {
+    String itemName;
+    int itemPrice;
+
+    public MenuItem(String name, int price) {
+        itemName = name;
+        itemPrice = price;
+
+    }
+
+    public static void main(String[] args) {
+        //Create a list that can hold MenuItem objects
+        List<MenuItem> dinner_order = new ArrayList<MenuItem>();
+
+        //Create and add Drink and Entree objects to the list
+        dinner_order.add(new Drink("Martini", 10, true));
+        dinner_order.add(new Entree("Shrimp Cocktail", 12, true));
+        dinner_order.add(new Entree("Filet Mignon", 30, false));
+        dinner_order.add(new Drink("Coffee", 6, false));
+
+        //List items in the dinner order
+        System.out.println("The dinner order is: \n");
+        String desc = "";
+        for (MenuItem i : dinner_order){
+            if (i instanceof Drink){
+                desc = " to drink";
+            }
+            if (i instanceof Entree){
+                desc = " to eat";
+            }
+            System.out.println(i.itemName + desc);
+        }
+
+
+
+    }
+}
+class Drink extends MenuItem{
+    boolean contains_alcohol;
+    public Drink (String name, int price, boolean alcohol){
+        //Invoke superclass constructor
+        super(name, price);
+        contains_alcohol = alcohol;
+    }
+}
+class Entree extends MenuItem{
+    boolean is_spicy;
+    public Entree (String name, int price, boolean spicy){
+        //Invoke superclass constructor
+        super(name, price);
+        is_spicy = spicy;
+    }
+}
