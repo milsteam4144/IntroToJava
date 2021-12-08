@@ -14,7 +14,7 @@ public class Rectangle {
         this.area = this.length * this.width;
     }
 
-    //Method to compare the permimeter and area
+    //Method to compare the perimeter and area
     public static boolean compareTo(Rectangle a, Rectangle b){
 
         if (a.length == b.length && a.width == b.width){
